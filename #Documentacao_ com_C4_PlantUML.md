@@ -1,9 +1,5 @@
 # Documentação com C4_PlantModel
 
-- Diagramas que podem ser utilizados: 
-
-> Obs.: Para criar a imagem, é necessario adicionar o seguinte código: 
->  !include 
 
 ## Diagramas
 
