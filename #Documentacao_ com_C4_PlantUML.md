@@ -1,4 +1,4 @@
-# Documentação com C4_PlantModel
+# Documentação com C4_PlantUML
 
 
 ## Diagramas
