@@ -1,5 +1,11 @@
 # Documentação com C4_PlantUML
 
+- Documentação: 
+
+
+- [C4 Model](https://c4model.com/)
+- [Web Server](http://www.plantuml.com/plantuml/uml/SoWkIImgAStDuIekISd9JE9oICrB0N41)
+
 
 ## Diagramas
 
@@ -94,4 +100,36 @@ Lay_L(from, to)
 Lay_R(from, to)
 
 Lay_Distance(from, to, ?distance): Sets the distance between from and to with down alignment (Lay_Distance(from,to,0) equals Lay_D(from, to)). The default alias of the floating legend is LEGEND().
+```
+
+- Incluir icone nos diagramas: 
+
+```
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/java.puml
+!include DEVICONS/mongodb.puml
+!include FONTAWESOME/server.puml
+!include FONTAWESOME/database.puml
+!include FONTAWESOME/react.puml
+
+
+
+[Documentação com os icones disponiveis](https://github.com/tupadr3/plantuml-icon-font-sprites)
+```
+
+- Adicionar AWS no diagrama: 
+
+```
+https://plantuml.com/stdlib
+
+!include <awslib/AWSCommon>
+!include <awslib/Mobile/APIGateway>
+!include <awslib/ApplicationIntegration/SNS>
+!include <awslib/ApplicationIntegration/SQS>
+
+
+APIGateway(partnerGateway, "Partner Gateway","cb-partner-gateway")
+SNS(sns,"asd","")
+SQS(sqs,"wasd","")
 ```
