@@ -1,0 +1,78 @@
+version: '3.6'
+services:
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.0.0
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      discovery.type: "single-node"
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: "-Xms2g -Xmx2g"
+      # xpack.monitoring.templates.enabled: "true"
+      # ELASTIC_USERNAME: "elastic"
+      # ELASTIC_PASSWORD: "admin"
+    volumes:
+      - ./esdata:/usr/share/elasticsearch/data
+    networks:
+      - elastic
+      
+# bin/elasticsearch-setup-passwords auto -> Gerar senha para 
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.0.0
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      # ELASTICSEARCH_USERNAME: "kibana"
+      # ELASTICSEARCH_PASSWORD: "LDXUgVIpz0FPecQob0Uz"
+    networks:
+      - elastic
+    depends_on:
+      - elasticsearch
+
+  # beat:
+  #   image: docker.elastic.co/apm/apm-server:7.1.1
+  #   ports:
+  #     - "8200:8200"
+  #     - "8201:8200"
+  #   environment:
+        # XPACK_MONITORING_ELASTICSEARCH_USERNAME: beats_system
+        # XPACK_MONITORING_ELASTICSEARCH_PASSWORD: beatspassword
+  #   volumes:
+  #     - ./apm-server.yml:/usr/share/apm-server/apm-server.yml
+  #   networks:
+  #     - elastic
+  #   depends_on:
+  #     - elasticsearch
+  #     - kibana
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.1.1
+    ports:
+      - "5000:5000"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      # ELASTIC_USER: $ELASTIC_USER
+      # ELASTIC_PASSWORD: $ELASTIC_PASSWORD
+      # XPACK_MONITORING_ELASTICSEARCH_USERNAME: logstash_system
+      # XPACK_MONITORING_ELASTICSEARCH_PASSWORD: logstashpassword
+      # XPACK_MONITORING_ELASTICSEARCH_HOSTS: "elasticsearch:9200"
+      # XPACK_MONITORING_ENABLED: "true"
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+    networks:
+      - elastic
+    restart: unless-stopped
+    depends_on:
+      - elasticsearch
+volumes:
+  esdata:
+    driver: local
+
+networks:
+  elastic:
+    driver: bridge

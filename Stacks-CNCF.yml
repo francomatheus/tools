@@ -1,0 +1,51 @@
+Links: 
+
+Cloud Native Cloud Formation: https://landscape.cncf.io/guide#introduction
+
+- APM:
+    - Kiali: https://github.com/kiali/kiali
+    - Datadog: 
+    - AppDynamic: 
+    - Dynatrace: 
+    - https://www.elastic.co/pt/observability/application-performance-monitoring
+
+Monitoramento: 
+    - https://github.com/NagiosEnterprises/nagioscore
+    - https://github.com/thanos-io/thanos
+    - Prometheus
+
+Service Mesh: 
+    - https://www.consul.io/
+    - https://istio.io/
+    - https://traefik.io/traefik-mesh/
+    - https://linkerd.io/
+
+API Gateway: 
+    - https://www.getambassador.io/
+    - https://konghq.com/
+    - 
+
+Autenticação: 
+    - https://www.keycloak.org/
+
+
+- Gestão de Cluster: 
+    - https://rancher.com/ -> https://github.com/rancher/rancher
+    
+- Cluster de containers:    
+    - https://github.com/kubernetes-sigs/kind -> Local
+    - minikube
+    - k3s
+
+- Caos Mesh: 
+    - https://litmuschaos.io/
+    - https://github.com/chaos-mesh/chaos-mesh
+
+- Tracing: 
+    - https://www.jaegertracing.io/
+    - https://spring.io/projects/spring-cloud-sleuth
+    - 
+
+- Logs: 
+    - https://www.fluentd.org/
+    - https://www.elastic.co/pt/logstash/
